@@ -1,0 +1,43 @@
+Dwie główne biblioteki odpowiedzialne za wspomniane funkcje w Javie to nieco już przestarzała AWT (abstract window toolkit) oraz Swing.
+
+Różnice pomiędzy AWT i Swing w największym skrócie polegają na tym w jaki sposób tworzone są kontrolki.
+W pierwszym przypadku są one pobierane z systemu (zbiór wspólny z wszystkich systemów operacyjnych) co miało być zgodne z główną zasadą - niezależnością od platformy.
+Swing jest natomiast jej rozszerzeniem i komponenty są rysowane od początku - nie korzysta ona z natywnych elementów.
+Dzięki temu program będzie wyglądał (a przynajmniej powinien) identycznie na wszystkich platformach, na których będzie uruchamiany.
+
+Wadą rozwiązania, które wykorzystuje Swing może być to, że podejście takie jest nieco powolne. Dawniej miało to spore znaczenie i miało duży wpływ na to, że Javę uważa się za ociężałą.
+Przy obecnym rozwoju technologii i coraz szybszych komputerach jest to praktycznie nieodczuwalne.
+
+Obie biblioteki zakładają komponentowe podejście do budowy interfejsu użytkownika.
+To znaczy, że GUI składamy z niewielkich cegiełek: na szczycie będzie nasza ramka (JFrame), do której dodajemy panele (JPanel), lub komponenty (dziedziczące po klasie JComponent).
+Dostępnych jest ogromna liczba składników takich jak przyciski, etykiety, pola tekstowe ...
+
+To co istotne to fakt, że biblioteka AWT dostarcza nam również możliwość przechwytywania zdarzeń generowanych przez użytkownika
+(wciśnięcie przycisku, kliknięcie myszą, przeciąganie myszy itp.) za pomocą mechanizmu słuchaczy zdarzeń.
+
+
+
+
+Projekt: wirtualna kamera + implementacja algorytmu eliminacji elementów zasłoniętych.
+- Możliwość przesunięcia kamery – translacja w układzie obserwatora: góra – dół, lewo – prawo i przód – tył;
+- Możliwość obracania kamery wokół trzech osi współrzędnych związanych z obserwatorem, czyli kamerą;
+- Możliwość skalowania;
+- Pominięcie problemu ostrości
+- Bardzo prosta scena (platforma + prostopadłosciany)
+- Algorytm eliminacji elementów zasłoniętych
+
+
+Po uruchomieniu, program przetwarza scenę:
+- wykonuje transformację ścian;
+- odrzuca tylne ściany;
+- rzutuje ściany;
+- odrzuca ściany wychodzące poza okno;
+- przekształca do współrzędnych 2D rysunku;
+- eliminuje elementy zasłonięte;
+- wyświetla bufor rysunku w oknie programu.
+
+Do eliminacji elementów zasłoniętych został wykorzystany algorytm skaningowy. W programie algorytm:
+- aktualizuje tablicę krawędzi aktywnych;
+- przygotowuje listę segmentów oraz wyznacza kolory w poszczególnych segmentach;
+- maluje segmenty w buforze rysunku.
+http://wazniak.mimuw.edu.pl/index.php?title=GKIW_Modu%C5%82_7_-_Eliminacja_powierzchni_zas%C5%82oni%C4%99tych
